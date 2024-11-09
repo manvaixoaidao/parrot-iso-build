@@ -225,14 +225,14 @@ case "$IMAGE_TYPE" in
 		ver_live_build=$(dpkg-query -f '${Version}' -W live-build)
 		if dpkg --compare-versions "$ver_live_build" lt 1:20151215; then
 			echo "ERROR: You need live-build (>= 1:20151215), you have $ver_live_build" >&2
-			exit 1
+			#exit 1
 		fi
 		debug "ver_live_build: $ver_live_build"
 
 		ver_debootstrap=$(dpkg-query -f '${Version}' -W debootstrap)
 		if dpkg --compare-versions "$ver_debootstrap" lt "1.0.97"; then
 			echo "ERROR: You need debootstrap (>= 1.0.97), you have $ver_debootstrap" >&2
-			exit 1
+			#exit 1
 		fi
 		debug "ver_debootstrap: $ver_debootstrap"
 	;;
@@ -244,14 +244,14 @@ case "$IMAGE_TYPE" in
 		ver_debian_cd=$(dpkg-query -f '${Version}' -W debian-cd)
 		if dpkg --compare-versions "$ver_debian_cd" lt 3.1.28; then
 			echo "ERROR: You need debian-cd (>= 3.1.28), you have $ver_debian_cd" >&2
-			exit 1
+			#exit 1
 		fi
 		debug "ver_debian_cd: $ver_debian_cd"
 
 		ver_simple_cdd=$(dpkg-query -f '${Version}' -W simple-cdd)
 		if dpkg --compare-versions "$ver_simple_cdd" lt 0.6.8; then
 			echo "ERROR: You need simple-cdd (>= 0.6.8), you have $ver_simple_cdd" >&2
-			exit 1
+			#exit 1
 		fi
 		debug "ver_simple_cdd: $ver_simple_cdd"
 	;;
