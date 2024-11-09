@@ -1,0 +1,27 @@
+name: Build ISO
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Maximize build disk space
+      uses: easimon/maximize-build-space@v10
+            
+    
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+
+    - name: Run
+      run: |
+        ./ci.sh --setup
+
+    - name: Upload
+      run: |
+        ISOPATH=$(find "./images" -type f -name "*.iso")
+        curl -T $ISOPATH -u :${{ secrets.pixeldrain }} https://pixeldrain.com/api/file/
